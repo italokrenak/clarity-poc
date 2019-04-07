@@ -1,0 +1,73 @@
+<div class="main-container">
+  <header class="header-6">
+
+    <div class="branding">
+      <a href="..." class="nav-link">
+        <clr-icon shape="vm-bug"></clr-icon>
+        <span class="title">Project Clarity</span>
+      </a>
+    </div>
+
+    <div class="header-nav">
+      <a href="..." class="active nav-link" routerLink="/poc-form"><span class="nav-text">Form</span></a>
+      <a href="..." class="active nav-link"><span class="nav-text">Dashboard</span></a>
+      <a href="..." class="nav-link"><span class="nav-text">Interactive Analytics</span></a>
+    </div>
+
+    <div class="header-actions">
+      <a href="..." class="nav-link nav-icon">
+        <clr-icon shape="cog"></clr-icon>
+      </a>
+    </div>
+  </header>
+
+  <div class="content-container">
+
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+
+    <clr-vertical-nav [clrVerticalNavCollapsible]="true">
+      <nav class="sidenav">
+        <section class="sidenav-content">
+
+          <div class="content-area">
+
+            <div class="clr-row">
+              <div class="clr-col-lg-12">
+                <div class="clr-control-container">
+                  <div class="clr-input-wrapper">
+                    <input type="text" id="basic" placeholder="Enter value here" class="clr-input">
+                    <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clr-row">
+              <div class="clr-col-lg-12">
+                <clr-tree-node [clrExpanded]="true">
+                  Permissions
+                  <clr-tree-node *ngFor="let permission of permissions" [clrExpanded]="true">
+                    {{permission.type}}
+                    <clr-tree-node *ngFor="let right of permission.rights" [clrSelected]="right.enable"
+                      (clrSelectedChange)="right.enable = !!$event">
+                      {{right.name}}
+                    </clr-tree-node>
+                  </clr-tree-node>
+                </clr-tree-node>
+              </div>
+            </div>
+
+          </div>
+
+
+        </section>
+
+
+      </nav>
+
+    </clr-vertical-nav>
+  </div>
+
+</div>
